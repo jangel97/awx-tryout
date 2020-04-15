@@ -1,0 +1,10 @@
+- name: Copy ssh keys into remote hosts 
+  hosts: all
+  tasks:
+    - name: ssh-copy-id
+      ssh-copy-id:
+        hostname: "{{ ansible_hostname }}"
+        username: root
+        password: Redhat01.
+        ssh_public_key: /root/.ssh/id_rsa.pub
+        ssh_port: 22

@@ -1,8 +1,14 @@
 ---
-- name: playbook that executes ssh-copy-id in vms
-  hosts: all
+- name: prueba
+- hosts: all
+  vars_prompt:
+
+    - name: username
+      prompt: "What is your username?"
+      private: no
+
+    - name: password
+      prompt: "What is your password?"
   tasks:
-  - name: install sshpass
-    yum:
-      name: sshpass
-      state: latest 
+    - debug:
+        msg: 'Logging in as {{ username }}'

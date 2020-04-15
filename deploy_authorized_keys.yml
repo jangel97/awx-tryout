@@ -1,15 +1,8 @@
 ---
 - name: playbook that executes ssh-copy-id in vms
-  hosts: localhost
-  vars:
-    passwd: "Redhat01." #we could use a vault to protect this
-    group: all  #default group to execute ssh-copy-id
-  remote_user: root
+  hosts: all
   tasks:
   - name: install sshpass
     yum:
       name: sshpass
       state: latest 
-  - name: deploy key 
-    command: sshpass -p "{{ passwd }}" ssh-copy-id  -o StrictHostKeyChecking=no root@'{{ item }}'
-    loop: "{{ groups['all'] }}"

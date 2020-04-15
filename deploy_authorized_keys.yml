@@ -1,12 +1,10 @@
 ---
 - name: prueba
-- hosts: all
+  hosts: all
   vars_prompt:
-
     - name: username
       prompt: "What is your username?"
       private: no
-
     - name: password
       prompt: "What is your password?"
   tasks:

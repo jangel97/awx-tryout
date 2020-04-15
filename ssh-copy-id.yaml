@@ -2,9 +2,8 @@
   hosts: all
   tasks:
     - name: ssh-copy-id
-      ssh-copy-id:
-        hostname: "{{ ansible_hostname }}"
-        username: root
-        password: Redhat01.
-        ssh_public_key: /root/.ssh/id_rsa.pub
-        ssh_port: 22
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+

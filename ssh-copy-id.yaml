@@ -1,9 +1,0 @@
-- name: Copy ssh keys into remote hosts 
-  hosts: all
-  tasks:
-    - name: ssh-copy-id
-      authorized_key:
-        user: root
-        state: present
-        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
-
